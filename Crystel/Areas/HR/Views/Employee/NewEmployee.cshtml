@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "NewEmployee";
+    Layout = "~/Areas/HR/Views/Shared/View.cshtml";
+}
+@section Head{
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/CrystelWebApi/api/Employee/departmentRep',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: '{}',
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    debugger;
+                    $('#ddlDept').append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                });
+            },
+            error: function (error) {
+                alert(error.responseText);
+                alert('there is error');
+            }
+        })
+        $.ajax({
+            type: 'Get',
+            url: '/CrystelWebApi/api/Employee/jobRep',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: '{}',
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    debugger;
+                    $('#ddlJob').append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                });
+            },
+            error: function (error) {
+                alert(error.responseText);
+                alert('there is error');
+            }
+        })
+        $.ajax({
+            type: 'Get',
+            url: '/CrystelWebApi/api/Employee/projectRep',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: '{}',
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    debugger;
+
+                    
+                    $('#ddlProject').append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                });
+            },
+            error: function (error) {
+                alert(error.responseText);
+                alert('there is error');
+            }
+        })
+    });
+</script>
+
+    }
+@section Body{
+<div class="container x_panel">
+    <div class="row">
+        <div class="col-lg-5">
+            <h4 style="color:#ff6a00">New Employee</h4>
+        </div>
+    </div>
+    <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+    <br />
+    <div class="x_title"></div>
+    <div class="x_panel">
+        <div class="container-fluid">
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-sm-5 col-md-5">
+                        <input type="text" class="form-control" name="txtname" id="txtname" placeholder="Full Name" />
+                    </div>
+                    <div class="col-lg-5 col-sm-5 col-md-5">
+                        <input type="text" class="form-control" name="txtPhone" id="txtPhone" placeholder="Phone" />
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" />
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="txtCEmail" id="txtCEmail" placeholder="Company Email" />
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <select id="ddlDept" name="ddlDept" class="form-control">
+                            <option value="0" selected>Department ...</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5">
+                        <select id="ddlJob" name="ddlJob" class="form-control">
+                            <option value="0" selected>Job Title ...</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <select id="ddlProject" name="ddlProject" class="form-control">
+                            <option value="0" selected>Project ...</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5">
+                        <select id="ddlGender" name="ddlGender" class="form-control">
+                            <option value="0" selected>Gender ...</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="txtNID" id="txtNID" placeholder="National ID" />
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="txtBdate" id="txtBdate" placeholder="Birth Date" />
+                    </div>
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="txtPass" id="txtPass" placeholder="Password" />
+                    </div>
+                    <div class="col-lg-5">
+                        <button type="button" class="btn btn-outline-success" id="btnSave">
+                            <span class="fa fa-save"></span> Save
+                        </button>
+                    </div>
+                </div>
+                <br />
+                <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    }

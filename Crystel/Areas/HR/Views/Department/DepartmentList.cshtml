@@ -1,0 +1,54 @@
+﻿@model DataAccsess.Entity.vmDepartment
+@{
+    ViewBag.Title = "DepartmentList";
+    Layout = "~/Areas/HR/Views/Shared/View.cshtml";
+}
+
+@section Body{
+    <div class="container x_panel">
+        <div class="row">
+            <div class="col-lg-5">
+                <h4 style="color:#ff6a00">Department List</h4>
+            </div>
+        </div>
+        <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+        <br />
+        <div class="x_title"></div>
+        <div class="x_panel">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <table class="table">
+                        <thead style="background-color:white ; color:#ff6a00;border-color:#ff6a00">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var x = from a in Model.Dept
+                                        select a;
+                            }
+                            @foreach (var y in x)
+                            {
+                                <tr>
+                                    <th scope="row">@y.Name</th>
+                                    <td align="right">
+                                        <button type="button" class="btn btn-danger" onclick="del(@y.Id)">Delete</button>
+                                    </td>
+                                    <td align="right">
+                                        <button type="button" class="btn btn-warning" onclick="Update(@y.Id)">Edit</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

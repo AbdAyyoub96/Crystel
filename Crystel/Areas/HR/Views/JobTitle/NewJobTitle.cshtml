@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "NewJobTitle";
+    Layout = "~/Areas/HR/Views/Shared/View.cshtml";
+}
+@section Head{
+<script type="text/javascript">
+    $(document).ready(function () {
+            debugger;
+            var Id = @ViewData["Id"];
+            if (Id != 0) {
+                $('#btnSave').text("Update")
+                $('#hJob').text("Edit Job Title")
+                $.ajax({
+                    type: 'Get',
+                    url: '/CrystelWebApi/api/JobTitle/Load/' + Id,
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    data: '{}',
+                    success: function (data) {
+                        $('#txtJob').val(data.Name);
+                    }
+                })
+            }
+            $('#btnSave').click(function () {
+                debugger;
+                var Id = @ViewData["Id"];
+                if (Id != 0) {
+                    var name = $("#txtJob").val();
+                    var data = {
+                        'Id': Id,
+                    'Name': name,
+                }
+                    $.ajax({
+                        type: 'post',
+                        url: '/CrystelWebApi/api/JobTitle/Update',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function () {
+                            alert("Updated")
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                            alert('there is error');
+                        }
+
+
+                    })
+                }
+                else {
+                    var name = $("#txtJob").val();
+                    var data = {
+                        'Name': name,
+                    }
+                    $.ajax({
+                        type: 'Post',
+                        url: '/CrystelWebApi/api/JobTitle/Save',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function () {
+                            alert("Saved")
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                            alert('there is error');
+                        }
+
+
+                    })
+                }
+                
+            })
+           
+        });
+</script>
+    }
+@section Body{
+    <div class="container x_panel">
+        <div class="row">
+            <div class="col-lg-5">
+                <h4 style="color:#ff6a00" id="hJob">New Job Title</h4>
+            </div>
+        </div>
+        <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+        <br />
+        <div class="x_title"></div>
+        <div class="x_panel">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="txtJob" id="txtJob" placeholder="Job Title" />
+                        </div>
+                        <div class="col-lg-5">
+                            <button type="button" class="btn btn-outline-success" id="btnSave">
+                                <span class="fa fa-save"></span> Save
+                            </button>
+                        </div>
+                    </div>
+                    <br />
+                    <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
