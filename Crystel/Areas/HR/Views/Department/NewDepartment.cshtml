@@ -4,13 +4,54 @@
     Layout = "~/Areas/HR/Views/Shared/View.cshtml";
 }
 @section Head{
-<script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function () {
-        $('#btnSave').click(function () {
             debugger;
-                    var Department = $("#txtDept").val();
+            var Id = @ViewData["Id"];
+            if (Id != 0) {
+                $('#btnSave').text("Update")
+                $('#hDept').text("Edit Department")
+                $.ajax({
+                    type: 'Get',
+                    url: '/CrystelWebApi/api/Department/Load?Id=' + Id,
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    data: '{}',
+                    success: function (data) {
+                        $('#txtDept').val(data.Name);
+                    }
+                })
+            }
+            $('#btnSave').click(function () {
+                debugger;
+                var Id = @ViewData["Id"];
+                if (Id != 0) {
+                    var name = $("#txtDept").val();
                     var data = {
-                        'Name': Department,
+                        'Id': Id,
+                    'Name': name,
+                }
+                    $.ajax({
+                        type: 'post',
+                        url: '/CrystelWebApi/api/Department/Update',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function () {
+                            alert("Updated")
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                            alert('there is error');
+                        }
+
+
+                    })
+                }
+                else {
+                    var name = $("#txtDept").val();
+                    var data = {
+                        'Name': name,
                     }
                     $.ajax({
                         type: 'Post',
@@ -25,20 +66,21 @@
                             alert(error.responseText);
                             alert('there is error');
                         }
+
+
                     })
                 }
-                
+
             })
-        
-        
-    });
-</script>
+
+        });
+    </script>
 }
 @section Body{
     <div class="container x_panel">
         <div class="row">
             <div class="col-lg-5">
-                <h4 style="color:#ff6a00">New Department</h4>
+                <h4 style="color:#ff6a00" id="hDept">New Department</h4>
             </div>
         </div>
         <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>

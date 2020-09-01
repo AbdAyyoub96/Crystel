@@ -130,6 +130,7 @@
     <Compile Include="Areas\HR\Controllers\JobTitleController.cs" />
     <Compile Include="Areas\HR\Controllers\ProjectController.cs" />
     <Compile Include="Areas\HR\HRAreaRegistration.cs" />
+    <Compile Include="Areas\Login\Controllers\LoginConController.cs" />
     <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +184,7 @@
     <Content Include="Areas\HR\Views\Department\DepartmentList.cshtml" />
     <Content Include="Areas\HR\Views\Project\ProjectList.cshtml" />
     <Content Include="Areas\HR\Views\JobTitle\JobTitlelist.cshtml" />
+    <Content Include="Areas\Login\Views\LoginCon\LoginView.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -366,7 +368,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HR\Models\" />
-    <Folder Include="Areas\Login\Controllers\" />
     <Folder Include="Areas\Login\Models\" />
     <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Models\" />

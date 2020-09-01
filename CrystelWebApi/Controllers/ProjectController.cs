@@ -18,5 +18,26 @@ namespace CrystelWebApi.Controllers
             IprojectRep iproject = new ProjectRep();
             return iproject.LoadMain();
         }
+        [HttpPost]
+        [Route("api/Project/Save")]
+        public void Save(ProjectName mod)
+        {
+            IprojectRep iproject = new ProjectRep();
+            iproject.Insert(mod);
+        }
+        [HttpPost]
+        [Route("api/Project/Update")]
+        public void Update(ProjectName mod)
+        {
+            IprojectRep iproject = new ProjectRep();
+            iproject.Update(mod);
+        }
+        [HttpGet]
+        [Route("api/Project/LoadProject")]
+        public ProjectName Load(int Id)
+        {
+            IprojectRep iproject  = new ProjectRep();
+            return iproject.Load(Id);
+        }
     }
 }

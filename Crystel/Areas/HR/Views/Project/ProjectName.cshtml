@@ -3,11 +3,84 @@
     ViewBag.Title = "NewJobTitle";
     Layout = "~/Areas/HR/Views/Shared/View.cshtml";
 }
+@section Head{
+    <script type="text/javascript">
+    $(document).ready(function () {
+            debugger;
+            var Id = @ViewData["Id"];
+            if (Id != 0) {
+                $('#btnSave').text("Update")
+                $('#hProject').text("Edit Project")
+                $.ajax({
+                    type: 'Get',
+                    url: '/CrystelWebApi/api/Project/LoadProject?Id=' + Id,
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    data: '{}',
+                    success: function (data) {
+                        $('#txtProject').val(data.Name);
+                    }
+                })
+            }
+            $('#btnSave').click(function () {
+                debugger;
+                var Id = @ViewData["Id"];
+                if (Id != 0) {
+                    var name = $("#txtProject").val();
+                    var data = {
+                        'Id': Id,
+                    'Name': name,
+                }
+                    $.ajax({
+                        type: 'post',
+                        url: '/CrystelWebApi/api/Project/Update',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function () {
+                            alert("Updated")
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                            alert('there is error');
+                        }
+
+
+                    })
+                }
+                else {
+                    var name = $("#txtProject").val();
+                    var data = {
+                        'Name': name,
+                    }
+                    $.ajax({
+                        type: 'Post',
+                        url: '/CrystelWebApi/api/Project/Save',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        success: function () {
+                            alert("Saved")
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                            alert('there is error');
+                        }
+
+
+                    })
+                }
+
+            })
+
+        });
+    </script>
+}
 @section Body{
     <div class="container x_panel">
         <div class="row">
             <div class="col-lg-5">
-                <h4 style="color:#ff6a00">New Project</h4>
+                <h4 style="color:#ff6a00" id="hProject">New Project</h4>
             </div>
         </div>
         <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>

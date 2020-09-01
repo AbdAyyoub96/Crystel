@@ -33,6 +33,12 @@ namespace Crystel.Areas.HR.Controllers
             }
             vm.Dept = DeptList;
             return View("DepartmentList",vm);
+            
+        }
+        public ActionResult Update(int id)
+        {
+            ViewData["Id"] = id;
+            return View("NewDepartment");
         }
     }
 }

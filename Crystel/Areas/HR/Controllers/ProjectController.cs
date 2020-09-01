@@ -34,5 +34,10 @@ namespace Crystel.Areas.HR.Controllers
             vm.projects = ProjectList;
             return View("ProjectList", vm);
         }
+        public ActionResult Update(int id)
+        {
+            ViewData["Id"] = id;
+            return View("ProjectName");
+        }
     }
 }

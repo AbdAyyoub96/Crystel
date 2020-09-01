@@ -3,6 +3,14 @@
     ViewBag.Title = "DepartmentList";
     Layout = "~/Areas/HR/Views/Shared/View.cshtml";
 }
+@section Head{
+    <script type="text/javascript">
+         function Update(id) {
+            debugger;
+            window.location = '@Url.Action("Update/Id", "Department")'.replace("Id", id)
+        }
+    </script>
+}
 
 @section Body{
     <div class="container x_panel">
