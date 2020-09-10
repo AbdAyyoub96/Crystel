@@ -1,0 +1,101 @@
+﻿@model DataAccsess.Entity.vmEmployee
+@{
+    ViewBag.Title = "NewAgents";
+    Layout = "~/Areas/Senior/Views/Shared/_Senior.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $.ajax({
+                type: 'Get',
+                url: '/CrystelWebApi/api/Skill/MainSkill',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: '{}',
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        debugger;
+                        $('#ddlSkill').append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                    });
+                },
+                error: function (error) {
+                    alert(error.responseText);
+                    alert('there is error');
+                }
+            })
+        });
+    </script>
+
+}
+@section Body{
+    <div class="container x_panel">
+        <div class="row">
+            <div class="col-lg-5">
+                <h4 style="color:#ff6a00">New Agent</h4>
+            </div>
+        </div>
+        <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+        <br />
+        <div class="x_title"></div>
+        <div class="x_panel">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <table class="table">
+                        <thead style="background-color:white ; color:#ff6a00;border-color:#ff6a00">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var x = from a in Model.Emp
+                                        where a.status == 0
+                                        select a;
+                            }
+                            @foreach (var y in x)
+                            {
+                                <tr>
+                                    <th scope="row">@y.FullName</th>
+                                    <th scope="row">@y.Phone</th>
+                                    <th scope="row">@y.CompanyEmail</th>
+                                    <th scope="row">@y.Gender</th>
+                                    <td align="right">
+                                        <select id="ddlSkill" name="ddlSkill" class="form-control">
+                                            <option value="0" selected>Skills ...</option>
+                                        </select>
+                                    </td>
+                                    <td align="right">
+                                        <button type="button" class="btn btn-success" onclick="add(@y.Id)">Done</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="form-popup" id="myForm">
+                        <form action="" class="form-container">
+                            <h1></h1>
+
+                            <label for="email"><b>Email</b></label>
+                            <input type="text" placeholder="Enter Email" name="email" required>
+
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+
+                            <button type="submit" class="btn">Login</button>
+                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        </form>
+                    </div>
+
+                    <br />
+                    <div style="border-radius:1px 3px;border-top:3px solid #ff6a00"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -61,13 +61,9 @@
     <Compile Include="Entity\WorkPlace.cs" />
     <Compile Include="Generic\GenericCrystel.cs" />
     <Compile Include="Generic\IGenericCrystel.cs" />
-    <Compile Include="Migrations\202008300953039_InitialCreate.cs" />
-    <Compile Include="Migrations\202008300953039_InitialCreate.Designer.cs">
-      <DependentUpon>202008300953039_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009011903039_bb.cs" />
-    <Compile Include="Migrations\202009011903039_bb.Designer.cs">
-      <DependentUpon>202009011903039_bb.cs</DependentUpon>
+    <Compile Include="Migrations\202009051138262_initDB.cs" />
+    <Compile Include="Migrations\202009051138262_initDB.Designer.cs">
+      <DependentUpon>202009051138262_initDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,11 +74,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008300953039_InitialCreate.resx">
-      <DependentUpon>202008300953039_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009011903039_bb.resx">
-      <DependentUpon>202009011903039_bb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009051138262_initDB.resx">
+      <DependentUpon>202009051138262_initDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,6 +29,7 @@ namespace CrystelBusinessLogic.SpecificRepository
         {
             CrystelContext con = new CrystelContext();
             List<ProjectName> MainProject = (from a in con.ProjectNames
+                                             where a.Id !=1
                                            select a).ToList<ProjectName>();
             return MainProject;
         }

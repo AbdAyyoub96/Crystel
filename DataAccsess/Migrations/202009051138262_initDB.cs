@@ -3,7 +3,7 @@ namespace DataAccsess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initDB : DbMigration
     {
         public override void Up()
         {
@@ -32,6 +32,7 @@ namespace DataAccsess.Migrations
                         Gender = c.Int(nullable: false),
                         CompanyEmail = c.String(),
                         Password = c.String(),
+                        status = c.Int(nullable: false),
                         skils_id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

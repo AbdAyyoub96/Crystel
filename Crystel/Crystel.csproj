@@ -125,13 +125,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Agent\AgentAreaRegistration.cs" />
+    <Compile Include="Areas\Agent\Controllers\ScheduleController.cs" />
     <Compile Include="Areas\HR\Controllers\DepartmentController.cs" />
     <Compile Include="Areas\HR\Controllers\EmployeeController.cs" />
     <Compile Include="Areas\HR\Controllers\JobTitleController.cs" />
     <Compile Include="Areas\HR\Controllers\ProjectController.cs" />
     <Compile Include="Areas\HR\HRAreaRegistration.cs" />
-    <Compile Include="Areas\Login\Controllers\LoginConController.cs" />
+    <Compile Include="Areas\Login\Controllers\LoginController.cs" />
     <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
+    <Compile Include="Areas\Senior\Controllers\AgentsController.cs" />
+    <Compile Include="Areas\Senior\SeniorAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,6 +143,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Login\Content\Login.css" />
+    <Content Include="Areas\Senior\Content\Popup.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -153,6 +159,7 @@
     <Content Include="Areas\HR\Views\Shared\View.cshtml" />
     <Content Include="Image\429800_logo_1579517564_n.png" />
     <Content Include="Image\crystel_social.jpg" />
+    <Content Include="Image\galaxy_1.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -184,7 +191,13 @@
     <Content Include="Areas\HR\Views\Department\DepartmentList.cshtml" />
     <Content Include="Areas\HR\Views\Project\ProjectList.cshtml" />
     <Content Include="Areas\HR\Views\JobTitle\JobTitlelist.cshtml" />
-    <Content Include="Areas\Login\Views\LoginCon\LoginView.cshtml" />
+    <Content Include="Areas\Login\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Agent\Views\Shared\web.config" />
+    <Content Include="Areas\Senior\Views\web.config" />
+    <Content Include="Areas\Senior\Views\Shared\_Senior.cshtml" />
+    <Content Include="Areas\Senior\Views\Agents\NewAgents.cshtml" />
+    <Content Include="Areas\Agent\Views\Shared\_agent.cshtml" />
+    <Content Include="Areas\Agent\Views\Schedule\ScheduleList.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -367,9 +380,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Agent\Models\" />
+    <Folder Include="Areas\Agent\Views\Home\" />
     <Folder Include="Areas\HR\Models\" />
     <Folder Include="Areas\Login\Models\" />
     <Folder Include="Areas\Login\Views\Shared\" />
+    <Folder Include="Areas\Senior\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

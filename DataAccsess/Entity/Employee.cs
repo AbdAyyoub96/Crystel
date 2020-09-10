@@ -26,6 +26,7 @@ namespace DataAccsess.Entity
         public int Gender { get; set;}
         public string CompanyEmail { get; set; }
         public string Password { get; set; }
+        public int status { get; set; }
         [ForeignKey("skills")]
         public int skils_id { get; set; }
         public Skills skills { get; set; }

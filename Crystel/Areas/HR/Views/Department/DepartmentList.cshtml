@@ -4,13 +4,26 @@
     Layout = "~/Areas/HR/Views/Shared/View.cshtml";
 }
 @section Head{
+
     <script type="text/javascript">
          function Update(id) {
             debugger;
             window.location = '@Url.Action("Update/Id", "Department")'.replace("Id", id)
         }
+
+        $(document).ready(function () {
+            $('#DeptTable').DataTable({
+                "ajax": {
+                    "url": "",
+                    "type": "GET",
+                    "datatype":"json"
+                },
+
+            });
+        });
     </script>
-}
+
+    }
 
 @section Body{
     <div class="container x_panel">
@@ -25,7 +38,7 @@
         <div class="x_panel">
             <div class="container-fluid">
                 <div class="form-group">
-                    <table class="table">
+                    <table class="table" id="DeptTable">
                         <thead style="background-color:white ; color:#ff6a00;border-color:#ff6a00">
                             <tr>
                                 <th scope="col">Name</th>

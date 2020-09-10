@@ -55,8 +55,10 @@
     <Compile Include="SpecificRepository\IEmployeeRep.cs" />
     <Compile Include="SpecificRepository\IJobRep.cs" />
     <Compile Include="SpecificRepository\IprojectRep.cs" />
+    <Compile Include="SpecificRepository\ISkillRep.cs" />
     <Compile Include="SpecificRepository\JobRep.cs" />
     <Compile Include="SpecificRepository\ProjectRep.cs" />
+    <Compile Include="SpecificRepository\SkillRep.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccsess\DataAccsess.csproj">
